@@ -11,6 +11,9 @@ ZSCORT_SAP05
 
 ## Objects
 
+### Behavior Definitions
+- ZI_SCORT_REPOSITORY_SYNC
+
 ### CDS Custom Entities
 - ZI_SCORT_REPOSITORY_OBJECT
 - ZI_SCORT_REPOSITORY_STATISTICS
