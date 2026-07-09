@@ -1,0 +1,9 @@
+unmanaged implementation in class zbp_scort_sync unique;
+strict ( 2 );
+
+define behavior for ZI_SCORT_REPOSITORY_SYNC alias SyncMatrix
+lock master
+authorization master ( global )
+{
+  static action sendPackage parameter ZI_SCORT_SEND_PACKAGE_PARAMS;
+}
