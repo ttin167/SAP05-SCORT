@@ -1,0 +1,62 @@
+### GLOBAL CLASS
+* ======================================================================
+* CLASS GLOBAL (vo boc, khai bao trong ADT khi tao Behavior Implementation)
+* ======================================================================
+CLASS zbp_scort_sync DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_scort_repository_sync.
+ENDCLASS.
+
+CLASS zbp_scort_sync IMPLEMENTATION.
+ENDCLASS.
+
+
+
+### Local Types
+
+CLASS lhc_syncmatrix DEFINITION INHERITING FROM cl_abap_behavior_handler.
+
+  PRIVATE SECTION.
+
+    METHODS sendpackage FOR MODIFY
+      IMPORTING keys FOR ACTION syncmatrix~sendpackage.
+
+
+    METHODS get_global_authorizations FOR GLOBAL AUTHORIZATION
+      IMPORTING
+        REQUEST requested_authorizations FOR SyncMatrix
+      RESULT result.
+
+ENDCLASS.
+
+
+CLASS lhc_syncmatrix IMPLEMENTATION.
+
+  METHOD sendpackage.
+
+    DATA lv_devclass TYPE devclass.
+
+    LOOP AT keys INTO DATA(ls_key).
+
+      lv_devclass = ls_key-%param-DevClass.
+      CHECK lv_devclass IS NOT INITIAL.
+
+
+      CALL FUNCTION 'Z_SCORT_SEND_PACKAGE_LOCAL'
+        DESTINATION 'NONE'
+        EXPORTING
+          iv_devclass = lv_devclass
+        EXCEPTIONS
+          send_failed = 1
+          OTHERS      = 2.
+
+
+    ENDLOOP.
+
+  ENDMETHOD.
+
+  METHOD get_global_authorizations.
+
+    result-%action-sendPackage = if_abap_behv=>auth-allowed.
+
+  ENDMETHOD.
+
+ENDCLASS.
