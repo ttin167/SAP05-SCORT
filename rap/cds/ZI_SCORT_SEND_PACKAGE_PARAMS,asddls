@@ -1,0 +1,6 @@
+@EndUserText.label: 'SCORT Send Package - Parameters'
+define abstract entity ZI_SCORT_SEND_PACKAGE_PARAMS
+{
+  @EndUserText.label: 'Package to send'
+  DevClass : abap.char(30);
+}
