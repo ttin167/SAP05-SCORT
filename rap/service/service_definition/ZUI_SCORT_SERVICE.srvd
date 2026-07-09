@@ -1,0 +1,7 @@
+@EndUserText.label: 'SCORT Service'
+define service ZUI_SCORT_SERVICE {
+  expose ZI_SCORT_REPOSITORY_OBJECT as RepositoryObject;
+  expose ZI_SCORT_REPOSITORY_STATISTICS as RepositoryStatistics;
+  expose ZI_SCORT_REPOSITORY_SYNC as RepositorySyncMatrix;
+  expose ZC_SCORT_SEND_LOG as SendLog;
+}
