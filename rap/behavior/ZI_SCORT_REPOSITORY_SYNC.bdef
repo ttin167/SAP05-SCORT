@@ -1,4 +1,4 @@
-unmanaged implementation in class zbp_scort_sync unique;
+unmanaged implementation in class ZBP_SCORT_SYNC unique;
 strict ( 2 );
 
 define behavior for ZI_SCORT_REPOSITORY_SYNC alias SyncMatrix
